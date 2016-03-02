@@ -7,9 +7,6 @@
 (def sample
   (-> "sample.xml" io/resource io/reader xml/parse))
 
-(map)
-
-
 (take 5 (map (partial * 10) (range)))
 
 (into []
@@ -24,110 +21,7 @@
 
 (+ (* 2 3) (/ 1 2))
 
-
 (defn foo [a]
   (into [] (comp (map (partial * 10))
                  (take 5)
                  (map inc)) (range)))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(def)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(def a)
