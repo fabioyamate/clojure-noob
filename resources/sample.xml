@@ -1,0 +1,8 @@
+<top>
+Baby, I'm the top
+  <mid>
+    <bot foo="bar">
+      I'm the bottom!
+    </bot>
+  </mid>
+</top>

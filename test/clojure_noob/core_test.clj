@@ -1,7 +1,8 @@
 (ns clojure-noob.core-test
-  (:require [clojure.test :refer :all]
+  (:require [midje.sweet :refer :all]
             [clojure-noob.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+;.;. The highest reward for a man's toil is not what he gets for it but
+;.;. what he becomes by it. -- Ruskin
+(fact "a-test"
+  (= 1 1) => true)
