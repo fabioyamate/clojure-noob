@@ -17,5 +17,11 @@
                  [manifold "0.1.3"]
                  [org.mock-server/mockserver-client-java "3.10.4"]
                  [com.datomic/datomic-pro "0.9.5350"]
-                 [reduce-fsm "0.1.4"]]
+                 [reduce-fsm "0.1.4"]
+
+                 [io.dropwizard.metrics/metrics-core "3.1.2"]
+                 [io.dropwizard.metrics/metrics-jvm "3.1.2"]
+                 [com.aphyr/riemann-java-client "0.4.1"]
+                 [com.aphyr/metrics3-riemann-reporter "0.4.1"]
+                 [riemann-clojure-client "0.4.1"] ]
   :profiles {:dev {:dependencies [[midje "1.8.3"]]}})
