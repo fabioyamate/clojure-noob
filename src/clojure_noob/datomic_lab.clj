@@ -6,6 +6,7 @@
 
 ;; set uri for local mem datomic
 (def datomic-uri "datomic:mem://local")
+(def datomic-uri "datomic:dev://localhost:4334/local")
 
 ;; create the db
 (d/create-database datomic-uri)
@@ -69,7 +70,8 @@
 ;; start consuming tx-reports
 (go-loop []
   (let [i (<! queue)]
-    (prn (changes (:db-after i)))
+    (prn i)
+    #_(prn (changes (:db-after i)))
     (recur)))
 
 (async/close! queue)
