@@ -14,6 +14,7 @@
                  [org.clojure/data.zip "0.1.1"]
                  [org.clojure/data.xml "0.0.8"]
                  [funcool/cats "1.2.1"]
+                 [manifold "0.1.3"]
                  [org.mock-server/mockserver-client-java "3.10.4"]
                  [com.datomic/datomic-pro "0.9.5350"]
                  [reduce-fsm "0.1.4"]]
