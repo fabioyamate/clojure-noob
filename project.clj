@@ -9,12 +9,12 @@
                  [org.clojure/core.async "0.2.374"]
                  [org.clojure/core.logic "0.8.10"]
                  [org.clojure/core.typed "0.3.22"]
-                 [prismatic/schema "1.0.5"]
+                 [prismatic/schema "1.1.0"]
                  [org.clojure/algo.monads "0.1.5"]
                  [org.clojure/data.zip "0.1.1"]
                  [org.clojure/data.xml "0.0.8"]
                  [funcool/cats "1.2.1"]
-                 [manifold "0.1.3"]
+                 [manifold "0.1.4"]
                  [org.mock-server/mockserver-client-java "3.10.4"]
                  [com.datomic/datomic-pro "0.9.5350"]
                  [reduce-fsm "0.1.4"]
@@ -24,4 +24,8 @@
                  [com.aphyr/riemann-java-client "0.4.1"]
                  [com.aphyr/metrics3-riemann-reporter "0.4.1"]
                  [riemann-clojure-client "0.4.1"] ]
+
+                 ;; architecture
+                 [com.stuartsierra/component "0.3.1"]
+                 ]
   :profiles {:dev {:dependencies [[midje "1.8.3"]]}})
