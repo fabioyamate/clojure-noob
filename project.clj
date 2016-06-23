@@ -9,6 +9,7 @@
                  [org.clojure/core.async "0.2.385"]
                  [org.clojure/core.logic "0.8.10"]
                  [org.clojure/core.typed "0.3.23"]
+                 [org.clojure/test.check "0.9.0"]
                  [prismatic/schema "1.1.2"]
                  [org.clojure/algo.monads "0.1.5"]
                  [org.clojure/data.zip "0.1.2"]
