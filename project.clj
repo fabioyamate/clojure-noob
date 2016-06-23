@@ -5,13 +5,13 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :repositories {"my.datomic.com" {:url "https://my.datomic.com/repo"
                                    :creds :auth}}
-  :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/core.async "0.2.374"]
+  :dependencies [[org.clojure/clojure "1.9.0-alpha3"]
+                 [org.clojure/core.async "0.2.385"]
                  [org.clojure/core.logic "0.8.10"]
-                 [org.clojure/core.typed "0.3.22"]
-                 [prismatic/schema "1.1.0"]
+                 [org.clojure/core.typed "0.3.23"]
+                 [prismatic/schema "1.1.2"]
                  [org.clojure/algo.monads "0.1.5"]
-                 [org.clojure/data.zip "0.1.1"]
+                 [org.clojure/data.zip "0.1.2"]
                  [org.clojure/data.xml "0.0.8"]
                  [funcool/cats "1.2.1"]
                  [manifold "0.1.4"]
