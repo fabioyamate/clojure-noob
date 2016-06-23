@@ -24,7 +24,7 @@
                  [io.dropwizard.metrics/metrics-jvm "3.1.2"]
                  [com.aphyr/riemann-java-client "0.4.1"]
                  [com.aphyr/metrics3-riemann-reporter "0.4.1"]
-                 [riemann-clojure-client "0.4.1"] ]
+                 [riemann-clojure-client "0.4.2"]
 
                  ;; architecture
                  [com.stuartsierra/component "0.3.1"]
