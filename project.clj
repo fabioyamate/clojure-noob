@@ -5,7 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :repositories {"my.datomic.com" {:url "https://my.datomic.com/repo"
                                    :creds :auth}}
-  :dependencies [[org.clojure/clojure "1.9.0-alpha3"]
+  :dependencies [[org.clojure/clojure "1.9.0-alpha7"]
                  [org.clojure/core.async "0.2.385"]
                  [org.clojure/core.logic "0.8.10"]
                  [org.clojure/core.typed "0.3.23"]
@@ -25,6 +25,8 @@
                  [com.aphyr/riemann-java-client "0.4.1"]
                  [com.aphyr/metrics3-riemann-reporter "0.4.1"]
                  [riemann-clojure-client "0.4.2"]
+
+                 [com.rpl/specter "0.11.2"]
 
                  ;; architecture
                  [com.stuartsierra/component "0.3.1"]
