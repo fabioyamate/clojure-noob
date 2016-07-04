@@ -1,6 +1,7 @@
 (ns clojure-noob.specter-bank
   (:require [com.rpl.specter :as s]
-            [com.rpl.specter.macros :as sm]))
+            [com.rpl.specter.macros :as sm]
+            [criterium.core :as c]))
 
 (def world
   {:people [{:money 129827 :name "Alice Brown"}
@@ -121,4 +122,4 @@
             [:people (s/srange 0 3) s/ALL :money]
             5000))
 
-(bank-loyal-bonus world)
+(c/bench (bank-loyal-bonus world))

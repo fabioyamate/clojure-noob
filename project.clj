@@ -28,6 +28,8 @@
 
                  [com.rpl/specter "0.11.2"]
 
+                 [criterium "0.4.4"]
+
                  ;; architecture
                  [com.stuartsierra/component "0.3.1"]
                  ]
