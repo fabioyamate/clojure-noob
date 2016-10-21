@@ -5,17 +5,17 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :repositories {"my.datomic.com" {:url "https://my.datomic.com/repo"
                                    :creds :auth}}
-  :dependencies [[org.clojure/clojure "1.9.0-alpha7"]
-                 [org.clojure/core.async "0.2.385"]
+  :dependencies [[org.clojure/clojure "1.9.0-alpha13"]
+                 [org.clojure/core.async "0.2.391"]
                  [org.clojure/core.logic "0.8.10"]
-                 [org.clojure/core.typed "0.3.23"]
+                 [org.clojure/core.typed "0.3.28"]
                  [org.clojure/test.check "0.9.0"]
-                 [prismatic/schema "1.1.2"]
-                 [org.clojure/algo.monads "0.1.5"]
+                 [prismatic/schema "1.1.3"]
+                 [org.clojure/algo.monads "0.1.6"]
                  [org.clojure/data.zip "0.1.2"]
                  [org.clojure/data.xml "0.0.8"]
                  [funcool/cats "1.2.1"]
-                 [manifold "0.1.4"]
+                 [manifold "0.1.5"]
                  [org.mock-server/mockserver-client-java "3.10.4"]
                  [com.datomic/datomic-pro "0.9.5350"]
                  [reduce-fsm "0.1.4"]
@@ -26,7 +26,7 @@
                  [com.aphyr/metrics3-riemann-reporter "0.4.1"]
                  [riemann-clojure-client "0.4.2"]
 
-                 [com.rpl/specter "0.11.2"]
+                 [com.rpl/specter "0.13.0"]
 
                  [criterium "0.4.4"]
 
