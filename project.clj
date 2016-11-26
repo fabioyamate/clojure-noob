@@ -6,8 +6,8 @@
   :repositories {"my.datomic.com" {:url "https://my.datomic.com/repo"
                                    :creds :auth}}
   :dependencies [[org.clojure/clojure "1.9.0-alpha13"]
-                 [org.clojure/core.async "0.2.391"]
-                 [org.clojure/core.logic "0.8.10"]
+                 [org.clojure/core.async "0.2.395"]
+                 [org.clojure/core.logic "0.8.11"]
                  [org.clojure/core.typed "0.3.28"]
                  [org.clojure/test.check "0.9.0"]
                  [prismatic/schema "1.1.3"]
@@ -27,7 +27,7 @@
                  [com.aphyr/metrics3-riemann-reporter "0.4.1"]
                  [riemann-clojure-client "0.4.2"]
 
-                 [com.rpl/specter "0.13.0"]
+                 [com.rpl/specter "0.13.1"]
 
                  [criterium "0.4.4"]
 
