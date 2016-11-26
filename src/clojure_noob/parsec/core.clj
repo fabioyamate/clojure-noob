@@ -54,3 +54,13 @@
                             (result [x,y]))))) "abc")
 
 (def letter (plus lower upper))
+
+(def alphanum (plus letter digit))
+
+(def word
+  (let [neWord (bind letter (fn [x]
+                              (bind word (fn [xs]
+                                           (result (cons x xs))))))]
+    (plus neWord (result ""))))
+
+(word "ab")

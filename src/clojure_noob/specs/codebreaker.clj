@@ -18,3 +18,10 @@
 
 (s/exercise (:ret (s/get-spec `score)))
 
+(defn score [secret guess]
+  {::exact-matches 4
+   ::loose-matches 3})
+
+(s/exercise-fn `score)
+
+(stest/check `score)
