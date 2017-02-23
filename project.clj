@@ -28,6 +28,8 @@
                  [com.aphyr/metrics3-riemann-reporter "0.4.1"]
                  [riemann-clojure-client "0.4.2"]
 
+		 [io.pedestal/pedestal.interceptor "0.5.2"]
+
                  [com.rpl/specter "0.13.1"]
 
                  [criterium "0.4.4"]
