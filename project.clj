@@ -32,6 +32,9 @@
 
                  [criterium "0.4.4"]
 
+	         [enlive "1.1.6"]
+		 [clj-http "2.3.0"]
+
                  ;; architecture
                  [com.stuartsierra/component "0.3.1"]
                  ]
