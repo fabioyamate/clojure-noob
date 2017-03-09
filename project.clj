@@ -28,16 +28,17 @@
                  [com.aphyr/metrics3-riemann-reporter "0.4.1"]
                  [riemann-clojure-client "0.4.2"]
 
-		 [io.pedestal/pedestal.interceptor "0.5.2"]
+                 [io.pedestal/pedestal.interceptor "0.5.2"]
 
                  [com.rpl/specter "0.13.1"]
 
                  [criterium "0.4.4"]
 
-	         [enlive "1.1.6"]
-		 [clj-http "2.3.0"]
+                 [enlive "1.1.6"]
+                 [clj-http "2.3.0"]
 
                  ;; architecture
                  [com.stuartsierra/component "0.3.1"]
                  ]
-  :profiles {:dev {:dependencies [[midje "1.8.3"]]}})
+  :profiles {:dev {:dependencies [[midje "1.8.3"]
+                                  [org.clojure/test.check "0.9.0"]]}})
