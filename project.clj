@@ -6,11 +6,11 @@
   :repositories {"my.datomic.com" {:url "https://my.datomic.com/repo"
                                    :creds :auth}}
   :dependencies [[org.clojure/clojure "1.9.0-alpha13"]
-                 [org.clojure/core.async "0.2.395"]
+                 [org.clojure/core.async "0.3.443"]
                  [org.clojure/core.logic "0.8.11"]
-                 [org.clojure/core.typed "0.3.28"]
+                 [org.clojure/core.typed "0.3.32"]
                  [org.clojure/test.check "0.9.0"]
-                 [prismatic/schema "1.1.3"]
+                 [prismatic/schema "1.1.6"]
                  [org.clojure/algo.monads "0.1.6"]
                  [org.clojure/data.zip "0.1.2"]
                  [org.clojure/data.xml "0.0.8"]
@@ -30,7 +30,7 @@
 
                  [io.pedestal/pedestal.interceptor "0.5.2"]
 
-                 [com.rpl/specter "0.13.1"]
+                 [com.rpl/specter "1.0.2"]
 
                  [com.taoensso/faraday "1.9.0"]
 
@@ -40,7 +40,7 @@
                  [clj-http "2.3.0"]
 
                  ;; architecture
-                 [com.stuartsierra/component "0.3.1"]
+                 [com.stuartsierra/component "0.3.2"]
                  ]
   :profiles {:dev {:dependencies [[midje "1.8.3"]
                                   [org.clojure/test.check "0.9.0"]]}})
