@@ -32,6 +32,8 @@
 
                  [com.rpl/specter "0.13.1"]
 
+                 [com.taoensso/faraday "1.9.0"]
+
                  [criterium "0.4.4"]
 
                  [enlive "1.1.6"]
