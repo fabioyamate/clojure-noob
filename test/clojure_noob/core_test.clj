@@ -1,8 +1,34 @@
 (ns clojure-noob.core-test
   (:require [midje.sweet :refer :all]
-            [clojure-noob.core :refer :all]))
+            [midje.config :as config]))
 
-;.;. The highest reward for a man's toil is not what he gets for it but
-;.;. what he becomes by it. -- Ruskin
-(fact "a-test"
-  (= 1 1) => true)
+(prn "====")
+
+(config/at-print-level
+ :print-facts
+ (facts "here"
+   (fact "foo"
+     1 => 1)
+
+   (fact "bar"
+     1 => 3)))
+
+(defn slow-fn
+  [ms]
+  (Thread/sleep ms))
+
+(defn log-form
+  [form]
+  (prn "here")
+  (prn form)
+  form)
+
+(background
+ (around :facts (time ?form)))
+
+(facts "foo"
+  (fact "slow test"
+    (slow-fn 1000) => irrelevant)
+
+  (fact "slowest test"
+    (slow-fn 2000) => irrelevant))
