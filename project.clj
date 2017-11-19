@@ -22,5 +22,5 @@
                  [criterium "0.4.4"]
                  ]
   :profiles {:dev {:plugins [[lein-midje "3.2.1"]]
-                   :dependencies [[midje "1.9.0-alpha12"]
+                   :dependencies [[midje "1.9.0-alpha11"]
                                   [org.clojure/test.check "0.9.0"]]}})
