@@ -7,7 +7,7 @@
                                    :creds :auth}}
   :dependencies [[org.clojure/clojure "1.9.0-RC1"]
                  [org.clojure/spec.alpha "0.1.143"]
-                 [org.clojure/core.async "0.3.443"]
+                 [org.clojure/core.async "0.3.465"]
                  [org.clojure/core.logic "0.8.11"]
                  [org.clojure/test.check "0.9.0"]
                  [org.clojure/core.cache "0.6.5"]
@@ -17,7 +17,7 @@
                  [manifold "0.1.6"]
                  [com.datomic/datomic-free "0.9.5561.62"]
                  ;; [com.datomic/datomic-pro "0.9.5407"]
-                 [com.rpl/specter "1.0.4"]
+                 [com.rpl/specter "1.0.5"]
 
                  [criterium "0.4.4"]
                  ]
