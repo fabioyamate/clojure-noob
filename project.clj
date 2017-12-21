@@ -5,7 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :repositories {"my.datomic.com" {:url "https://my.datomic.com/repo"
                                    :creds :auth}}
-  :dependencies [[org.clojure/clojure "1.9.0-RC1"]
+  :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/spec.alpha "0.1.143"]
                  [org.clojure/core.async "0.3.465"]
                  [org.clojure/core.logic "0.8.11"]
@@ -16,7 +16,7 @@
                  [org.clojure/data.xml "0.0.8"]
                  [org.clojure/tools.logging "0.4.0"]
                  [manifold "0.1.6"]
-                 [com.datomic/datomic-free "0.9.5561.62"]
+                 [com.datomic/datomic-free "0.9.5656"]
                  ;; [com.datomic/datomic-pro "0.9.5407"]
                  [com.rpl/specter "1.0.5"]
 
@@ -29,5 +29,5 @@
                  [criterium "0.4.4"]
                  ]
   :profiles {:dev {:plugins [[lein-midje "3.2.1"]]
-                   :dependencies [[midje "1.9.0-alpha11"]
+                   :dependencies [[midje "1.9.1"]
                                   [org.clojure/test.check "0.9.0"]]}})
