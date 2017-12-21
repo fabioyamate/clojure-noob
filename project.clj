@@ -14,10 +14,17 @@
                  [org.clojure/core.memoize "0.5.9"]
                  [org.clojure/data.zip "0.1.2"]
                  [org.clojure/data.xml "0.0.8"]
+                 [org.clojure/tools.logging "0.4.0"]
                  [manifold "0.1.6"]
                  [com.datomic/datomic-free "0.9.5561.62"]
                  ;; [com.datomic/datomic-pro "0.9.5407"]
                  [com.rpl/specter "1.0.5"]
+
+                 [cheshire "5.8.0"]
+
+                 [finagle-clojure/core "0.7.0"]
+                 [finagle-clojure/http "0.7.0"]
+                 [io.zipkin.finagle/zipkin-finagle-http_2.11 "0.3.6"]
 
                  [criterium "0.4.4"]
                  ]
