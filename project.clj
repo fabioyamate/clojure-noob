@@ -23,6 +23,8 @@
 
                  [cheshire "5.8.0"]
 
+                 [http-kit "2.2.0"]
+
                  [finagle-clojure/core "0.7.0"]
                  [finagle-clojure/http "0.7.0"]
                  [io.zipkin.finagle/zipkin-finagle-http_2.11 "0.3.6"]
