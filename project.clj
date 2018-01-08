@@ -21,6 +21,9 @@
                  ;; [com.datomic/datomic-pro "0.9.5407"]
                  [com.rpl/specter "1.0.5"]
 
+                 [pandect "0.6.1"]
+                 [crypto-random "1.2.0"]
+
                  [cheshire "5.8.0"]
 
                  [http-kit "2.2.0"]
