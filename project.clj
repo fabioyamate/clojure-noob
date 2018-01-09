@@ -20,6 +20,7 @@
                  [com.datomic/datomic-free "0.9.5656"]
                  ;; [com.datomic/datomic-pro "0.9.5407"]
                  [com.rpl/specter "1.0.5"]
+                 [irresponsible/anarchy "0.2.0"]
 
                  [pandect "0.6.1"]
                  [crypto-random "1.2.0"]
