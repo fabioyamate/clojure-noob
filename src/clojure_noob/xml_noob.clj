@@ -2,7 +2,8 @@
   (:require [clojure.java.io :as io]
             [clojure.data.xml :as xml]
             [clojure.data.zip.xml :as zip-xml]
-            [clojure.zip :as zip]))
+            [clojure.zip :as zip]
+            [uk.me.rkd.xml-validation :as xmlv]))
 
 (def sample
   (-> "sample.xml" io/resource io/reader xml/parse))
@@ -25,3 +26,8 @@
   (into [] (comp (map (partial * 10))
                  (take 5)
                  (map inc)) (range)))
+
+(def validator? (xmlv/create-validation-fn "resources/BV_001.xsd"))
+(def xml-content (-> "BVXA001.xml" io/resource slurp))
+
+(validator? xml-content)

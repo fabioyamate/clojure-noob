@@ -14,11 +14,14 @@
                  [org.clojure/core.cache "0.6.5"]
                  [org.clojure/core.memoize "0.5.9"]
                  [org.clojure/data.zip "0.1.2"]
+
                  [org.clojure/data.xml "0.0.8"]
+                 [uk.me.rkd.xml-validation "0.1.0-SNAPSHOT"]
+
                  [org.clojure/tools.logging "0.4.0"]
                  [manifold "0.1.6"]
-                 [com.datomic/datomic-free "0.9.5656"]
-                 ;; [com.datomic/datomic-pro "0.9.5407"]
+                 [com.datomic/datomic-free "0.9.5385"]
+                 ;; [Comcid.datomic/datomic-pro "0.9.5407"]
                  [com.rpl/specter "1.0.5"]
                  [irresponsible/anarchy "0.2.0"]
 
