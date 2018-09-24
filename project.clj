@@ -36,7 +36,12 @@
                  [finagle-clojure/http "0.7.0"]
                  [io.zipkin.finagle/zipkin-finagle-http_2.11 "0.3.6"]
 
-                 [criterium "0.4.4"]
-                 ]
-  :profiles {:dev {:plugins []
-                   :dependencies [[org.clojure/test.check "0.9.0"]]}})
+                 [criterium "0.4.4"]]
+
+  :eftest {:test-warn-time 500
+           :report clojure.test/report
+           }
+
+  :profiles {:dev {:plugins [[lein-eftest "0.5.3"]]
+                   :dependencies [[eftest "0.5.3"]
+                                  [org.clojure/test.check "0.9.0"]]}})
