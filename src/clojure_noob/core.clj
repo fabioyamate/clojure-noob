@@ -6,8 +6,6 @@
   [x]
   (println x "Hello, World!"))
 
-(defn bar [a] a)
-
 (defmacro pick-one [x y]
   `(if (= 0 (rand-int 2))
      ~x
@@ -35,4 +33,3 @@
   (loop [x xs]
     (prn x)
     (recur (rest xs))))
-

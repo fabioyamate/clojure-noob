@@ -42,6 +42,8 @@
            :report clojure.test/report
            }
 
-  :profiles {:dev {:plugins [[lein-eftest "0.5.3"]]
+  :profiles {:dev {:plugins [[lein-eftest "0.5.3"]
+                             [lein-topology "0.2.0"]]
                    :dependencies [[eftest "0.5.3"]
+                                  [lein-topology "0.2.0"]
                                   [org.clojure/test.check "0.9.0"]]}})
