@@ -1,5 +1,5 @@
 (ns clojure-noob.spec-walkthrough
-  (:require [clojure.spec :as s]))
+  (:require [clojure.spec.alpha :as s]))
 
 (s/def ::even? (s/and integer? even?))
 (s/def ::odd? (s/and integer? odd?))

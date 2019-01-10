@@ -1,5 +1,5 @@
 (ns clojure-noob.fish
-  (:require [clojure.spec :as s]))
+  (:require [clojure.spec.alpha :as s]))
 
 ;;;; Play with http://gigasquidsoftware.com/blog/2016/05/29/one-fish-spec-fish/
 
@@ -58,6 +58,6 @@
         :args ::first-line
         :ret string?)
 
-(s/instrument #'fish-line)
+(s/exercise-fn #'fish-line)
 
 (fish-line  2  1 "Red" "Blue")
