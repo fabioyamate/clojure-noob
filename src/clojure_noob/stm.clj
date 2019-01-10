@@ -28,17 +28,18 @@
 (defn plus2 [x]
   (+ x 2))
 
-(time
- (let [t1 (future
-            (dosync
-             #_(ensure state)
-             (Thread/sleep 1000)
-             (alter state update :a (fnil plus2 0))))
-       t2 (future
-            (dosync
-             (Thread/sleep 500)
-             (alter state update :a (fnil plus2 0))))]
-   [@t1 @t2]))
+(comment
+  (time
+   (let [t1 (future
+              (dosync
+               #_(ensure state)
+               (Thread/sleep 1000)
+               (alter state update :a (fnil plus2 0))))
+         t2 (future
+              (dosync
+               (Thread/sleep 500)
+               (alter state update :a (fnil plus2 0))))]
+     [@t1 @t2])))
 
 (def thread-pool
   (Executors/newFixedThreadPool
@@ -52,7 +53,8 @@
     (.submit thread-pool
              #(dotimes [_ exec-count] (f)))))
 
-(dothreads! #(.print System/out "Hi ") :threads 2 :times 2)
+(comment
+  (dothreads! #(.print System/out "Hi ") :threads 2 :times 2))
 
 (def initial-board
   [[:- :k :-]
@@ -107,10 +109,6 @@
   [mover (some #(good-move? % enemy-pos)
                (shuffle (king-moves mpos)))])
 
-(reset-board!)
-
-(take 5 (repeatedly #(choose-move @to-move)))
-
 (defn place [from to] to)
 
 (defn move-piece [[piece dest] [[_ src] _]]
@@ -130,12 +128,18 @@
      (move-piece move @to-move)
      (update-to-move move))))
 
-(reset-board!)
-(make-move!)
-(board-map deref board)
+(comment
+  (reset-board!)
 
-(time
- (dothreads! make-move! :threads 100000 :times 1000000000000000))
+  (take 5 (repeatedly #(choose-move @to-move)))
 
-@to-move
-@num-moves
+
+  (reset-board!)
+  (make-move!)
+  (board-map deref board)
+
+  (time
+   (dothreads! make-move! :threads 10 :times 10000))
+
+  @to-move
+  @num-moves)

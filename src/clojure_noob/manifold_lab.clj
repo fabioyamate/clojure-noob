@@ -22,13 +22,14 @@
 
 ;;; composing
 
-(let [d (d/deferred)]
-  (-> (d/let-flow [a (future 1)
-                   b (future 2)
-                   c (+ a 3)
-                   e ]
-        (+ a b c))
-      (deref 100 "timeout")))
+(comment
+  (let [d (d/deferred)]
+    (-> (d/let-flow [a (future 1)
+                     b (future 2)
+                     c (+ a 3)
+                     e ]
+          (+ a b c))
+        (deref 100 "timeout"))))
 
 ;;;; streams
 

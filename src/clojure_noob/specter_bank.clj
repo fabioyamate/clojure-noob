@@ -7,7 +7,7 @@
   {:people [{:money 129827 :name "Alice Brown"}
             {:money 100 :name "John Smith"}
             {:money 6821212339 :name "Donald Trump"}
-            {:money 2870 :name "Charlie Johnson"}
+            n            {:money 2870 :name "Charlie Johnson"}
             {:money 8273821 :name "Charlie Rose"}
             ]
    :bank {:funds 4782328748273}})
@@ -47,9 +47,7 @@
            #(- % amt))
           ))))
 
-(-> world
-    (user->bank "John Smith" 10)
-    (user->bank "Alice Brown" -5000))
+
 
 
 (defn transfer
@@ -91,10 +89,6 @@
             [:people s/ALL :money]
             1))
 
-(-> world
-    pay-fee
-    bank-give-dollar)
-
 (defn user [name]
   [:people
    s/ALL
@@ -106,7 +100,7 @@
             [(user to) :money]
             amt))
 
-(transfer-users world "Alice Brown" "John Smith" 100000)
+
 
 (defn user->bank* [world from amt]
   (transfer world
@@ -114,12 +108,19 @@
             [:bank :funds]
             amt))
 
-(user->bank world "John Smith" 50)
-
 (defn bank-loyal-bonus [world]
   (transfer world
             [:bank :funds]
             [:people (s/srange 0 3) s/ALL :money]
             5000))
 
-(c/bench (bank-loyal-bonus world))
+(comment
+  (-> world
+      (user->bank "John Smith" 10)
+      (user->bank "Alice Brown" -5000))
+  (-> world
+      pay-fee
+      bank-give-dollar)
+  (transfer-users world "Alice Brown" "John Smith" 100000)
+  (user->bank world "John Smith" 50)
+  (c/bench (bank-loyal-bonus world)))

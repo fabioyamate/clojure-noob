@@ -25,11 +25,12 @@
   x
   )
 
-(time (slow-sum 10 2))
+(comment
+  (time (slow-sum 10 2))
 
-(def results (mapv #(future (slow-fn %)) (range 2000)))
+  (def results (mapv #(future (slow-fn %)) (range 2000)))
 
-(def results (vec (pmap slow-fn (range 50))))
+  (def results (vec (pmap slow-fn (range 50))))
 
 ;;;; agents thread model, they are basically a pool of threads
 ;;;; agents have by default two options `send` and `send-off`
@@ -47,15 +48,15 @@
 ;;;; also read on Java Concurrency in Practice book
 ;;;; Joy of Clojure on concurrency / parallel chapters
 
-(def log-agent (agent 0))
-(def log-agent2 (agent 0))
-(def log-agent3 (agent 0))
-(def log-agent4 (agent 0))
-(def log-agent5 (agent 0))
-(def log-agent6 (agent 0))
-(def log-agent7 (agent 0))
+  (def log-agent (agent 0))
+  (def log-agent2 (agent 0))
+  (def log-agent3 (agent 0))
+  (def log-agent4 (agent 0))
+  (def log-agent5 (agent 0))
+  (def log-agent6 (agent 0))
+  (def log-agent7 (agent 0))
 
-(send log-agent slow-inc)
+  (send log-agent slow-inc)
 
 ;;; some conclusions on this is that agents are sequential
 ;;; all send "tasks" to the same agent are serial, so if you
@@ -74,27 +75,27 @@
 ;;; is complete. If the queue size is large it will wait until
 ;;; everything is consumed
 
-(time (await (send log-agent6 slow-sum 12)))
-(time
- (->> (vector
-       (future (await (send log-agent slow-sum 7)))
-       (future (await (send log-agent slow-sum 8)))
-       (future (await (send log-agent slow-sum 9)))
-       (future (await (send log-agent slow-sum 10)))
-       (future (await (send log-agent slow-sum 11)))
-       (future (await (send log-agent slow-sum 12)))
-       (future (await (send log-agent slow-sum 12)))
-       )
-      (mapv deref)))
+  (time (await (send log-agent6 slow-sum 12)))
+  (time
+   (->> (vector
+         (future (await (send log-agent slow-sum 7)))
+         (future (await (send log-agent slow-sum 8)))
+         (future (await (send log-agent slow-sum 9)))
+         (future (await (send log-agent slow-sum 10)))
+         (future (await (send log-agent slow-sum 11)))
+         (future (await (send log-agent slow-sum 12)))
+         (future (await (send log-agent slow-sum 12)))
+         )
+        (mapv deref)))
 
-@log-agent
+  @log-agent
 
 ;;;; futures in clojure uses agent internally and dispatches
 ;;;; to a cached thread pool, thus is a unbounded thread
 ;;;; good for IO since you don't block. However, creating too
 ;;;; many threads might degradate the instance performance
 ;;;; if it doesn't have enough processors available
-(future (slow-fn))
+  (future (slow-fn))
 
 
 ;;;; Some more conclusions (there are differences) but
@@ -106,3 +107,4 @@
 ;;;; erlang = actor model mail box
 ;;;; clojure = uses java underneath / core.async as go routines
 
+  )

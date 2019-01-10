@@ -11,11 +11,10 @@
      ~x
      ~y))
 
-(pick-one
- (println "hello")
- (println "world"))
-
-
+(comment
+  (pick-one
+   (println "hello")
+   (println "world")))
 
 (defn dummy-distribution [n]
   (map (partial + n)
@@ -23,13 +22,15 @@
                          n)
                       10)))))
 
-#dbg (+ 2 2)
+(comment
+  #dbg (+ 2 2)
 
-(dummy-distribution 2)
+  (dummy-distribution 2)
 
-(t "hh")
+  (t "hh")
 
-(defn floop [xs]
-  (loop [x xs]
-    (prn x)
-    (recur (rest xs))))
+  (defn floop [xs]
+    (loop [x xs]
+      (prn x)
+      (recur (rest xs))))
+  )

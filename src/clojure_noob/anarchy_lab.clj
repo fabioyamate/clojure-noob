@@ -28,8 +28,9 @@
   (prn i)
   i)
 
-(->> (match-conds cond-matrix conds data) ;; match conditions
-     trace
-     (take 1)                               ;; first match wins
-     (match-actions action-matrix)        ;; match actions
-     (reduce #(%2 %) data))                 ;; apply actions
+(comment
+  (->> (match-conds cond-matrix conds data) ;; match conditions
+       trace
+       (take 1)                               ;; first match wins
+       (match-actions action-matrix)        ;; match actions
+       (reduce #(%2 %) data)))                 ;; apply actions

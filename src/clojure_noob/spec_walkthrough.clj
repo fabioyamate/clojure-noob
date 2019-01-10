@@ -13,4 +13,5 @@
                  :oes (s/* (s/cat :o ::odd? :e ::even?))
                  :ex (s/alt :odd ::odd? :even ::even?)))
 
-(s/conform spec [42 11 13 15 {:a 1 :b 2 :c 3} 1 2 3 42 43 44 11])
+(comment
+  (s/conform spec [42 11 13 15 {:a 1 :b 2 :c 3} 1 2 3 42 43 44 11]))

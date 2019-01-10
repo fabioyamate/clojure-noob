@@ -35,7 +35,8 @@
               :oes (s/* (s/cat :o ::odd? :e ::even?))
               :ex (s/alt :odd ::odd? :even ::even?)))
 
-(s/conform s [42 11 13 15 {:a 1 :b 2 :c 3} 1 2 3 42 43 44 11])
+(comment
+  (s/conform s [42 11 13 15 {:a 1 :b 2 :c 3} 1 2 3 42 43 44 11]))
 
 (defn my-inc [x]
   (str (inc x)))
@@ -55,25 +56,23 @@
           ks))
 
 (s/fdef extract
-        :args (s/cat :m map?
-                     :ks (s/coll-of any?))
-        :fn (fn [ctx] (prn ctx)
-              (= (into #{} (-> ctx :args :ks))
-                 (into #{} (-> ctx :ret keys))))
-        :ret map?)
-
-(stest/instrument `extract)
+  :args (s/cat :m map?
+               :ks (s/coll-of any?))
+  :fn (fn [ctx] (prn ctx)
+        (= (into #{} (-> ctx :args :ks))
+           (into #{} (-> ctx :ret keys))))
+  :ret map?)
 
 (comment
   (my-inc "a")
 
-  (extract {:a 1 :b 2} [:a]))
+  (extract {:a 1 :b 2} [:a])
 
-(extract {:bar false} [:bar])
+  (extract {:bar false} [:bar]))
 
 
 (s/fdef symbol2
-        :args (s/alt :separate (s/cat :ns string? :n string?)
-                     :str string?
-                     :sym symbol?)
-        :ret symbol?)
+  :args (s/alt :separate (s/cat :ns string? :n string?)
+               :str string?
+               :sym symbol?)
+  :ret symbol?)

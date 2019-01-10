@@ -34,7 +34,5 @@
        (apply-or-error clean-phone)
        (apply-or-error clean-state)))
 
-(clean-contact)
-
-
-
+(comment
+  (clean-contact))

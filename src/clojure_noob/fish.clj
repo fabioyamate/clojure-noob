@@ -34,17 +34,18 @@
                            #(not= (:c1 %) (:c2 %))
                            fish-number-rhymes-with-color?))
 
-(s/explain ::first-line [1 2 "Red" "Black"])
-(s/explain ::first-line [1 2 "Red" "Dun"])
+(comment
+  (s/explain ::first-line [1 2 "Red" "Black"])
+  (s/explain ::first-line [1 2 "Red" "Dun"])
 
-(s/valid? ::first-line [1 2 "Red" "Blue"])
+  (s/valid? ::first-line [1 2 "Red" "Blue"])
 
-(s/conform ::first-line [1 2 "Red" "Blue"])
-(s/conform ::first-line [1 2 "Red" "Black"])
+  (s/conform ::first-line [1 2 "Red" "Blue"])
+  (s/conform ::first-line [1 2 "Red" "Black"])
 
-(s/exercise ::first-line 5)
+  (s/exercise ::first-line 5)
 
-(s/exercise ::first-line)
+  (s/exercise ::first-line))
 
 (defn fish-line [n1 n2 c1 c2]
   (clojure.string/join
@@ -55,9 +56,10 @@
          c2])))
 
 (s/fdef fish-line
-        :args ::first-line
-        :ret string?)
+  :args ::first-line
+  :ret string?)
 
-(s/exercise-fn #'fish-line)
+(comment
+  (s/exercise-fn #'fish-line)
 
-(fish-line  2  1 "Red" "Blue")
+  (fish-line  2  1 "Red" "Blue"))

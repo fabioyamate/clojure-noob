@@ -27,7 +27,8 @@
                  (take 5)
                  (map inc)) (range)))
 
-(def validator? (xmlv/create-validation-fn "resources/BV_001.xsd"))
-(def xml-content (-> "BVXA001.xml" io/resource slurp))
+(comment
+  (def validator? (xmlv/create-validation-fn "resources/BV_001.xsd"))
+  (def xml-content (-> "BVXA001.xml" io/resource slurp))
 
-(validator? xml-content)
+  (validator? xml-content))
