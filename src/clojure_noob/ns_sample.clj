@@ -11,4 +11,5 @@
   (f1 (f2 x)))
 
 (defn f4 [x y]
-  (ns2/f2 x (f3 y)))
+  (ns2/f2 x (f3 y))
+  (f3 y))

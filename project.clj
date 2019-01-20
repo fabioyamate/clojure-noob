@@ -18,6 +18,8 @@
                  [org.clojure/data.xml "0.0.8"]
                  [uk.me.rkd.xml-validation "0.1.0-SNAPSHOT"]
 
+                 [org.clojure/math.numeric-tower "0.0.4"]
+
                  [org.clojure/tools.logging "0.4.0"]
                  [manifold "0.1.6"]
                  [com.datomic/datomic-free "0.9.5385"]
