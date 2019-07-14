@@ -21,6 +21,7 @@
                  [org.clojure/math.numeric-tower "0.0.4"]
 
                  [org.clojure/tools.logging "0.4.0"]
+                 [prismatic/plumbing "0.5.5"]
                  [manifold "0.1.6"]
                  [com.datomic/datomic-free "0.9.5385"]
                  ;; [Comcid.datomic/datomic-pro "0.9.5407"]
