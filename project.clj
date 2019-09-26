@@ -27,6 +27,7 @@
                  [com.datomic/datomic-free "0.9.5697"]
                  ;; [Comcid.datomic/datomic-pro "0.9.5407"]
                  [com.rpl/specter "1.1.2"]
+                 [meander/epsilon "0.0.207"]
                  [irresponsible/anarchy "0.2.0"]
 
                  [pandect "0.6.1"]
