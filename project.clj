@@ -32,6 +32,7 @@
 
                  [pandect "0.6.1"]
                  [crypto-random "1.2.0"]
+                 [prismatic/schema "1.1.10"]
 
                  [cheshire "5.8.0"]
 

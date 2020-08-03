@@ -4,7 +4,8 @@
             [clojure.repl :as repl]
             [topology.edgelist :as te]
             [topology.printer :as tp]
-            [vijual]))
+            [vijual]
+            [clojure-noob.dfs :as dfs]))
 
 (defn parent-children-map
   "Converts a vector of [child parent] edges into a map where every entry has
@@ -99,12 +100,25 @@
    (map first)
    (vijual/draw-directed-graph))
 
+  (-> (dfs/edges->nodes edges)
+      (dfs/add-children {:id nil})
+      clojure.pprint/pprint)
+
 
   (->> (filter edge-project? edges)
        (map (fn [[e w]]
               (reverse e)))
        make-tree
        clojure.pprint/pprint)
+
+  (->> edges
+       (map (fn [[e w]]
+              (reverse e)))
+       make-tree
+       clojure.pprint/pprint)
+
+  (->> (map first edges)
+       (vijual/draw-directed-graph))
 
   (tp/print-weighted-edges
    (te/dirs->fn-edges "./src"))
