@@ -38,7 +38,7 @@
 
 (do (println "------------- transduce")
     (transduce xform-sum
-               vector
+               +
                (range 5)))
 
 ;; traditional way
@@ -48,7 +48,7 @@
          (map my-inc)
          (filter my-even?)
          (map (partial my-sum 5))
-         (reduce vector [])))
+         (reduce +)))
 
 ;; if we wanted to mimic the machine
 
@@ -56,13 +56,13 @@
   [x]
   (let [x2 (my-inc x)]
     (when (my-even? x2)
-      (let [x3 (my-sum x2 5)]
+      (let [x3 (my-sum x2 x)]
         x3))))
 
 (do (println "-------------- xform-fn")
     (->> (range 5)
          (keep xform-fn)
-         (reduce vector [])))
+         (reduce conj [])))
 
 ;; eduction
 
@@ -87,7 +87,8 @@
     (let [c1 (async/chan 10 xform-sum)]
       (async/go
         (>! c1 1)
-        (>! c1 2))
+        (>! c1 2)
+        (>! c1 3))
 
       (<!! c1)
-      #_(<!! c1)))
+      (<!! c1)))
