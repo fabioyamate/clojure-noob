@@ -46,3 +46,17 @@
 (defn make-genesis
   []
   [])
+
+(s/def ::f pos?)
+
+(s/fdef foo
+  :args (s/cat :a int?)
+  :ret ::f)
+
+(defn foo
+  [a]
+  a)
+
+(stest/instrument)
+(foo "foo")
+(stest/check `foo {:clojure.spec.test.check/opts {:num-tests 10}})
