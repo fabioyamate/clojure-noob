@@ -11,7 +11,8 @@
 
 ;; person/id       - identity uuid
 ;; person/name     - string
-;; person/tax-id   - identity string
+;; person/email    - identity string
+;; token/value     - unique string
 ;; account/id      - identity uuid
 ;; account/balance - bigdec
 
@@ -35,6 +36,13 @@
     :db/valueType :db.type/string
     :db/cardinality :db.cardinality/one
     :db/unique :db.unique/identity
+    :db.install/_attribute :db.part/db}
+
+   {:db/id #db/id[:db.part/db]
+    :db/ident :token/value
+    :db/valueType :db.type/string
+    :db/cardinality :db.cardinality/one
+    :db/unique :db.unique/value
     :db.install/_attribute :db.part/db}
 
    {:db/id #db/id[:db.part/db]
@@ -110,3 +118,37 @@
 ;; 60929fa9-811c-43ae-b6a7-1a982ca8c41f already held by:
 ;; 17592186045424 asserted for: 17592186045427
 ;; #:db{:error :db.error/unique-conflict}
+
+(comment
+  (def charlie-id
+    (d/squuid))
+
+  (def david-id
+    (d/squuid))
+
+  (d/transact conn [{:db/id #db/id[:db.part/user]
+                     :person/id charlie-id
+                     :person/name "Charlie"
+                     :token/value "token-c"}])
+
+  ;; fails with unique conflict
+  (d/transact conn [{:db/id #db/id[:db.part/user]
+                     :person/id david-id
+                     :person/name "David"
+                     :token/value "token-c"}])
+
+  ;; changes charlie token
+  (d/transact conn [{:person/id charlie-id
+                     :token/value "token-a"}])
+
+  ;; david is able to get token-c
+  (d/transact conn [{:db/id #db/id[:db.part/user]
+                     :person/id david-id
+                     :person/name "David"
+                     :token/value "token-c"}])
+
+  ;; charlie can't get token-c
+  (d/transact conn [{:person/id charlie-id
+                     :token/value "token-c"}])
+
+  )
