@@ -151,4 +151,11 @@
   (d/transact conn [{:person/id charlie-id
                      :token/value "token-c"}])
 
+  ;; retracting david
+  (d/transact conn [[:db/retractEntity [:person/id david-id]]])
+
+  ;; charlie can get token-c again
+  (d/transact conn [{:person/id charlie-id
+                     :token/value "token-c"}])
+
   )
