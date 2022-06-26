@@ -16,6 +16,8 @@
                  [org.clojure/core.memoize "0.5.9"]
                  [org.clojure/data.zip "0.1.3"]
 
+                 [io.pedestal/pedestal.interceptor "0.5.10"]
+
                  [org.clojure/data.xml "0.0.8"]
                  [uk.me.rkd.xml-validation "0.1.0-SNAPSHOT"]
 
