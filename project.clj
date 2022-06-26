@@ -38,7 +38,7 @@
 
                  [cheshire "5.8.0"]
 
-                 [http-kit "2.2.0"]
+                 [http-kit "2.6.0"]
 
                  [criterium "0.4.4"]]
 
