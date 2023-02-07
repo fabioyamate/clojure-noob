@@ -39,6 +39,7 @@
                  [cheshire "5.8.0"]
 
                  [http-kit "2.6.0"]
+                 [less-awful-ssl "1.0.6"]
 
                  [criterium "0.4.4"]]
 
