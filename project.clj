@@ -10,7 +10,7 @@
   :dependencies [[org.clojure/clojure "1.11.1"]
                  [org.clojure/core.specs.alpha "0.2.44"]
                  [org.clojure/spec.alpha "0.2.176"]
-                 [org.clojure/core.async "0.4.500"]
+                 [org.clojure/core.async "1.6.681"]
                  [org.clojure/core.logic "0.8.11"]
                  [org.clojure/test.check "0.9.0"]
                  [org.clojure/core.cache "0.7.2"]
