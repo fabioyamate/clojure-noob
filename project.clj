@@ -7,7 +7,7 @@
                                    :creds :gpg}}
 
   :plugins [[lein-ancient "0.6.15"]]
-  :dependencies [[org.clojure/clojure "1.11.1"]
+  :dependencies [[org.clojure/clojure "1.11.3"]
                  [org.clojure/core.specs.alpha "0.2.44"]
                  [org.clojure/spec.alpha "0.2.176"]
                  [org.clojure/core.async "1.6.681"]
@@ -16,6 +16,7 @@
                  [org.clojure/core.cache "0.7.2"]
                  [org.clojure/core.memoize "0.5.9"]
                  [org.clojure/data.zip "0.1.3"]
+                 [org.clojure/data.csv "1.1.0"]
 
                  [io.pedestal/pedestal.interceptor "0.5.10"]
 
@@ -33,9 +34,10 @@
                  [meander/epsilon "0.0.207"]
                  [irresponsible/anarchy "0.2.0"]
 
-                 [pandec/pandect "0.6.1"]
+                 [pandect/pandect "0.6.1"]
                  [crypto-random/crypto-random "1.2.0"]
-                 [prismatic/schema "1.1.10"]
+                 [prismatic/schema "1.4.1"]
+                 [com.vodori/schema-forms "0.1.2"]
 
                  [cheshire/cheshire "5.8.0"]
 
@@ -48,17 +50,27 @@
                  [funcool/cats "2.4.2"]
                  [funcool/promesa "11.0.678"]
 
-                 [honeysql/honeysql "1.0.461"]
+                 [metosin/spec-tools "0.10.6"]
+                 [metosin/malli "0.15.0"]
+
+                 [com.github.seancorfield/honeysql "2.6.1126"]
 
                  ;; markdown
-                 [io.github.nextjournal/markdown "0.5.148"]]
+                 [io.github.nextjournal/markdown "0.5.148"]
+
+                 ;; tap>
+                 [djblue/portal "0.58.5"]
+                 [vlaaad/reveal "1.3.284"]]
 
   :eftest {:test-warn-time 500
            :report clojure.test/report
            }
 
-  :profiles {:dev {:plugins [[lein-eftest "0.5.8"]
+  :profiles {:dev {:jvm-opts ["-Dclojure.core.async.pool-size=1"]
+                   :plugins [[lein-eftest "0.5.8"]
                              [lein-topology "0.2.0"]]
                    :dependencies [[eftest "0.5.8"]
                                   [lein-topology "0.2.0"]
-                                  [org.clojure/test.check "0.9.0"]]}})
+                                  [org.clojure/test.check "0.9.0"]
+                                  [com.github.nubank/morse "v2023.10.06.02"]]
+                   :repositories [["jitpack" "https://jitpack.io"]]}})

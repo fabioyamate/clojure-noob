@@ -1,11 +1,12 @@
 (ns clojure-noob.async-thread
-  (:require [clojure.core.async :as a :refer [<! go go-loop]]))
+  (:require [clojure.core.async :as a :refer [<! go go-loop]])
+  (:import java.util.concurrent.locks.ReentrantLock))
 
 (defn thread-name
   []
   (.getName (Thread/currentThread)))
 
-(print-thread)
+(thread-name)
 ;; => "nREPL-session-9f1cc377-f18a-4d8e-911c-e3d1c9ac5d36"
 
 ;; futures uses the Agent (CachedThreadPool)
@@ -58,6 +59,34 @@
 ;; => ["clojure-agent-send-off-pool-240" "clojure-agent-send-off-pool-241"]
 
 
+(def rl (ReentrantLock.))
+(future
+  (.lock rl))
+
+(future
+  (Thread/sleep 30000)
+  (println "unlocking...")
+  (.unlock rl)
+  (println "done"))
+
+(.lock rl)
+
+(def c (a/chan))
+
+(future
+  (a/<!! (a/go
+           (println (a/<!! c)))))
+
+(future (Thread/sleep 5000)
+        (a/go (a/>! c 1)))
+(a/>!! c 1)
+
+(a/<!! (a/go
+         (println (thread-name))
+         (.lock rl)
+         (println (thread-name))))
+
+(a/go (.read System/in))
 
 ;; Playing with sequences
 
@@ -136,6 +165,28 @@
   (go (println "running " n " " (thread-name))
       (Thread/sleep 10000)
       (println "released " n " " (thread-name))))
+
+(defn factorial
+  ([x]
+   (factorial x (bigint 1)))
+  ([x acc]
+   (if (< x 2)
+     acc
+     (recur (dec x) (* acc x)))))
+
+(defn divides? [m n] (zero? (rem m n)))
+
+(defn prime? [n] (and (< 1 n) (not-any? #(divides? n %) (range 2 n))))
+
+
+(a/<!! (a/go @(future (Thread/sleep 10000))))
+
+#_(defn is-prime?
+    [x]
+    (cond (or (= x 1) (= x 2)) true
+          (even? x) false
+          :else
+          ))
 
 (do (f 1)
     (f 2)
