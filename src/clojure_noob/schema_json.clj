@@ -4,12 +4,21 @@
 
 (def units (s/enum "celsius" "farenheit"))
 
-(def Location
+(s/defschema Location
+  "Descripition Location"
   {:location s/Str
    :unit units})
 
 (sf/prismatic->json-schema
  Location)
+;; => {:type "object",
+;;     :title "Location",
+;;     :properties
+;;     {:location {:type "string", :title "Location"},
+;;      :unit
+;;      {:type "string", :enum #{"celsius" "farenheit"}, :title "Unit"}},
+;;     :additionalProperties false,
+;;     :required [:location :unit]}
 ;; => {:type "object",
 ;;     :properties
 ;;     {:temperature {:type "string", :title "Temperature"},
@@ -17,6 +26,133 @@
 ;;      {:type "string", :enum #{"celsius" "farenheit"}, :title "Unit"}},
 ;;     :additionalProperties false,
 ;;     :required [:temperature :unit]}
+
+(s/defschema Metadata
+  "Fooo"
+  {:source s/Str})
+
+(s/defschema Page
+  {:number s/Int
+   :metdata Metadata})
+
+(s/defschema Document
+  {:pages [Page]
+   (s/optional-key :a) s/Bool
+   :num (s/maybe s/Str)
+   :str-or-list (s/either s/Str [s/Int])
+   :metdata Metadata})
+
+(sf/prismatic->json-schema
+ Document)
+;; => {:type "object",
+;;     :title "Document",
+;;     :properties
+;;     {:pages
+;;      {:type "array",
+;;       :items
+;;       {:type "object",
+;;        :title "Page",
+;;        :properties
+;;        {:number {:type "integer", :title "Number"},
+;;         :metdata
+;;         {:type "object",
+;;          :title "Metdata",
+;;          :properties {:source {:type "string", :title "Source"}},
+;;          :additionalProperties false,
+;;          :required [:source]}},
+;;        :additionalProperties false,
+;;        :required [:number :metdata]},
+;;       :minItems 0,
+;;       :title "Pages"},
+;;      :a {:type "boolean", :title "a"},
+;;      :num {:type "string", :title "Num"},
+;;      :str-or-list
+;;      {:anyOf
+;;       [{:type "string"}
+;;        {:type "array",
+;;         :items {:type "integer", :title "integer?"},
+;;         :minItems 0}],
+;;       :title "Str Or List"},
+;;      :metdata
+;;      {:type "object",
+;;       :title "Metdata",
+;;       :properties {:source {:type "string", :title "Source"}},
+;;       :additionalProperties false,
+;;       :required [:source]}},
+;;     :additionalProperties false,
+;;     :required [:pages :num :str-or-list :metdata]}
+;; => {:type "object",
+;;     :title "Document",
+;;     :properties
+;;     {:pages
+;;      {:type "array",
+;;       :items
+;;       {:type "object",
+;;        :title "Page",
+;;        :properties
+;;        {:number {:type "integer", :title "Number"},
+;;         :metdata
+;;         {:type "object",
+;;          :title "Metdata",
+;;          :properties {:source {:type "string", :title "Source"}},
+;;          :additionalProperties false,
+;;          :required [:source]}},
+;;        :additionalProperties false,
+;;        :required [:number :metdata]},
+;;       :minItems 0,
+;;       :title "Pages"},
+;;      :a {:type "boolean", :title "a"},
+;;      :metdata
+;;      {:type "object",
+;;       :title "Metdata",
+;;       :properties {:source {:type "string", :title "Source"}},
+;;       :additionalProperties false,
+;;       :required [:source]}},
+;;     :additionalProperties false,
+;;     :required [:pages :metdata]}
+;; => {:type "object",
+;;     :title "Document",
+;;     :properties
+;;     {:pages
+;;      {:type "array",
+;;       :items
+;;       {:type "object",
+;;        :title "Page",
+;;        :properties
+;;        {:number {:type "integer", :title "Number"},
+;;         :metdata
+;;         {:type "object",
+;;          :title "Metdata",
+;;          :properties {:source {:type "string", :title "Source"}},
+;;          :additionalProperties false,
+;;          :required [:source]}},
+;;        :additionalProperties false,
+;;        :required [:number :metdata]},
+;;       :minItems 0,
+;;       :title "Pages"},
+;;      :metdata
+;;      {:type "object",
+;;       :title "Metdata",
+;;       :properties {:source {:type "string", :title "Source"}},
+;;       :additionalProperties false,
+;;       :required [:source]}},
+;;     :additionalProperties false,
+;;     :required [:pages :metdata]}
+;; => {:type "object",
+;;     :title "Document",
+;;     :properties
+;;     {:pages
+;;      {:type "array",
+;;       :items
+;;       {:type "object",
+;;        :title "Page",
+;;        :properties {:number {:type "integer", :title "Number"}},
+;;        :additionalProperties false,
+;;        :required [:number]},
+;;       :minItems 0,
+;;       :title "Pages"}},
+;;     :additionalProperties false,
+;;     :required [:pages]}
 
 (s/defn get-weather :- s/Int
   [location :- Location])
@@ -61,7 +197,7 @@
 ;;       :title "Input Schemas"}},
 ;;     :additionalProperties false,
 ;;     :required [:output-schema :input-schemas]}
-
+b
 (type (:schema (k get-weather)))
 ;; => schema.core.FnSchema
 
