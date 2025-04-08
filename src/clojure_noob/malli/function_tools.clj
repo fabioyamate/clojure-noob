@@ -310,3 +310,28 @@
 ;;       :enum ["celsius" "farenheit"],
 ;;       :default "celsius"}},
 ;;     :required [:location]}
+
+
+(def Location
+  [:map
+   {:foo "dsjk"}
+   [:components map?]
+   [:location
+    {:description "The location"}
+    :string]
+   [:unit
+    {:description "The unit"
+     :optional true}
+    [:enum
+     {:json-schema/default "celsius"}
+     "celsius" "farenheit"]]])
+
+(m/=> my-tool [:=> [:cat Location] :string])
+(defn my-tool
+  [x] x)
+
+(def x (:schema (first (vals (first (vals (m/function-schemas)))))))
+
+(let [[in out] (m/children x)]
+  (assert (= 1 (count (m/children in))))
+  (json-schema/transform (mu/dissoc (first (m/children in)) :components)))
