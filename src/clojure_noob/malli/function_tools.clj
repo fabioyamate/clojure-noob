@@ -5,7 +5,8 @@
             [malli.util :as mu]
             [malli.json-schema :as json-schema]
             [clojure.string :as str]
-            [cheshire.core :as json]))
+            [cheshire.core :as json]
+            [malli.transform :as mt]))
 
 (defn plus [x y]
   (+ x y))
@@ -335,3 +336,87 @@
 (let [[in out] (m/children x)]
   (assert (= 1 (count (m/children in))))
   (json-schema/transform (mu/dissoc (first (m/children in)) :components)))
+
+
+(m/decode [:map [:int int?]]
+          {:int "1"}
+          mt/string-transformer)
+;; => {:int 1}
+
+(m/encode [:map [:int int?]]
+          {:int 1}
+          mt/string-transformer)
+;; => {:int "1"}
+
+mt/string-transform ;; decode -> from string to type, encode -> from type to string
+
+;; identity
+(let [schema [:map [:int int?]]
+      data {:int 1}]
+  (as-> data $
+    (m/encode schema $ mt/string-transformer)
+    (m/decode schema $ mt/string-transformer)
+    (= data)))
+
+(let [schema [:map [:int int?]]
+      data {:int 1
+            :date #inst "2010-01-01T00:00:00Z"}
+      t mt/string-transformer]
+  (println (m/encode schema data t))
+  (as-> data $
+    (m/encode schema $ t)
+    (m/decode schema $ t)
+    (= data)))
+
+(def Address
+  [:map
+   [:id string?]
+   [:tags [:set keyword?]]
+   [:address
+    [:map
+     [:street string?]
+     [:city string?]
+     [:zip int?]
+     [:lonlat [:tuple double? double?]]]]])
+
+(m/decode
+ Address
+ {:id "Lillan",
+  :tags ["coffee" "artesan" "garden"],
+  :address {:street "Ahlmanintie 29"
+            :city "Tampere"
+            :zip 33100
+            :lonlat [61.4858322 23.7854658]}}
+ mt/json-transformer)
+;; => {:id "Lillan",
+;;     :tags #{:coffee :artesan :garden},
+;;     :address
+;;     {:street "Ahlmanintie 29",
+;;      :city "Tampere",
+;;      :zip 33100,
+;;      :lonlat [61.4858322 23.7854658]}}
+
+(m/encode
+ Address
+ {:id "Lillan",
+  :tags ["coffee" "artesan" "garden"],
+  :address {:street "Ahlmanintie 29"
+            :city "Tampere"
+            :zip 33100
+            :lonlat [61.4858322 23.7854658]}}
+ mt/json-transformer)
+;; => {:id "Lillan",
+;;     :tags #{:coffee :artesan :garden},
+;;     :address
+;;     {:street "Ahlmanintie 29",
+;;      :city "Tampere",
+;;      :zip 33100,
+;;      :lonlat [61.4858322 23.7854658]}}
+
+
+mt/collection-transformer
+
+
+(m/validate int? 42)
+
+((m/validator int?) 42)
