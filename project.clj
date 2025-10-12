@@ -7,10 +7,10 @@
                                    :creds :gpg}}
 
   :plugins [[lein-ancient "0.6.15"]]
-  :dependencies [[org.clojure/clojure "1.11.3"]
+  :dependencies [[org.clojure/clojure "1.12.0"]
                  [org.clojure/core.specs.alpha "0.2.44"]
                  [org.clojure/spec.alpha "0.2.176"]
-                 [org.clojure/core.async "1.6.681"]
+                 [org.clojure/core.async "1.9.808-alpha1"]
                  [org.clojure/core.logic "0.8.11"]
                  [org.clojure/test.check "0.9.0"]
                  [org.clojure/core.cache "0.7.2"]
